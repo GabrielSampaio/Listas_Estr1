@@ -1,3 +1,9 @@
+/**************************************
+* Trabalho 1-AV2 de Estrutura de Dados I
+* Curso de Sistemas da informacao
+* Aluno: Gabriel Amorim R. S. - matricula: 0050011378
+* Listas
+***************************************/
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,11 +15,14 @@ struct lista{
        typedef struct lista Lista;
 
 
+
+//Função de criação da lista
 Lista * lst_cria()
 {    
      return NULL;
 }
 
+//Função para inserir valores na lista
 Lista *lst_insere(Lista *p,int valor)
 {
     Lista *a=(Lista*) malloc(sizeof(Lista));
@@ -22,20 +31,22 @@ Lista *lst_insere(Lista *p,int valor)
    return a;
 } 
 
+//Função somente para imprimir
 void lst_imprime(Lista *p)
 {
     Lista *a;
-    printf("[");
     for(a=p;a!=NULL;a=a->prox)
     {
     	printf("%d",a->info);
     	if(a->prox!=NULL)
-    		printf(",");
+    		printf(" -> ");
+    	else
+    		printf(" -> NULL\n");
 	}
-	printf("]\n");
 
 }
 
+//Função para busca, retornando a lista na posição do encontrado ou NULL se não existir
 Lista *lst_buscar(Lista *p, int chv)
 {
     Lista *a;
@@ -49,6 +60,7 @@ Lista *lst_buscar(Lista *p, int chv)
 }
 
 
+//Função para separar apartir de algum número
 Lista *separar(Lista *l,int n)
 {
 	Lista *a=l,*b=NULL;
