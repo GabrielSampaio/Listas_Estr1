@@ -65,6 +65,7 @@ int main()
 		{
             if(isdigit(conta[i]))//ve se é número
 			{
+				printf("%d",chartoint(conta[i]));
                 pilha_push(num,chartoint(conta[i]));
 				
             } 
