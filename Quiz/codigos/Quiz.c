@@ -1,3 +1,9 @@
+/**************************************
+* Trabalho 3 - AV2 de Estrutura de Dados I
+* Curso de Sistemas da informacao
+* Aluno: Gabriel Amorim R. S. - matricula: 0050011378
+* Fila - Quiz
+***************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,13 +12,13 @@
 int main()
 {
 	int op=0,i,j;
-	char nome[50];
+	char nome[50],insere[50];
 	int pergunta,jogadores=0;
 	char resp;
 	Fila* n;
 	char perguntas[3][100] = { {"Em que ano inventaram a linguagem C?\na)1265\nb)1750\nc)1985\nd)1978\n"},
-						{"Segundo o calendario chines, qual e o animal de 2015?\na)Cabra\nb)ovelha\nc)cao\nd)falcao"},
-						{"Com quantos votos validos Dilma foi reeleita?\na)49%\nb)42%\nc)44%\nd)50%"}};
+						{"Segundo o calendario chines, qual e o animal de 2015?\na)Cabra\nb)ovelha\nc)cao\nd)falcao\n"},
+						{"Com quantos votos validos Dilma foi reeleita?\na)49%\nb)42%\nc)44%\nd)50%\n"}};
 	char gabarito[3][2] = { {"d"},
 							{"a"},
 							{"c"} };
@@ -29,7 +35,7 @@ int main()
 			do
 			{
 				printf("Informe o nome do participante. Digite 'sair' quando acabar os participantes.\n");
-				scanf("%s",nome);
+				scanf("%s",&nome);
 				fflush(stdin);
 			
 				if(strcmp(nome,"sair")==0)
@@ -57,15 +63,16 @@ int main()
 					printf("%s, responda a pergunta.",nome);
 					pergunta= rand() % 3;
 					
-					for (j=0;j<100;j++)
+					for (j=0;perguntas[pergunta][j]!='\0';j++)
 						printf("%c",perguntas[pergunta][j]);
 					scanf("%s",&resp);
 					fflush(stdin);
 					
 					if(gabarito[pergunta][0]==resp)
 					{
+						strcpy(insere,nome);
 						puts("Resposta correta!");
-						fila_insere(n,nome);
+						fila_insere(n,insere);
 						jogadores++;
 					}
 					else
@@ -76,6 +83,7 @@ int main()
 						jogadores=0;
 						fila_retira(n,nome);
 						printf("Parabens %s, você foi o vencedor do nosso QUIZ!!!",nome);
+						break;
 					}
 					
 				}
@@ -89,5 +97,6 @@ int main()
 	}while(1);
 	
 fila_libera(n);
+system("pause");
 return 0;
 }
