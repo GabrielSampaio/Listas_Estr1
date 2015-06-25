@@ -15,6 +15,7 @@ int main()
 	char nome[50],insere[50];
 	int pergunta,jogadores=0;
 	char resp;
+	srand( (unsigned)time(NULL) );
 	Fila* n;
 	char perguntas[3][100] = { {"Em que ano inventaram a linguagem C?\na)1265\nb)1750\nc)1985\nd)1978\n"},
 						{"Segundo o calendario chines, qual e o animal de 2015?\na)Cabra\nb)ovelha\nc)cao\nd)falcao\n"},
